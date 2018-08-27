@@ -1,0 +1,51 @@
+<div class="row" style="padding:50px">
+
+  <div class="col-6">
+    <h3>Upload Form</h3>
+  	<div class="form-group">
+  		<label for="Id">Id</label><br>
+      	{{input type="number" class="form-control" id="id" value=id min="1" max="99999"}}
+    </div>
+    <div class="form-group">
+      	<label for="name">Name</label><br>
+      	{{input type="text" class="form-control" id="name" value=name }}
+  	</div>
+  	<div class="form-group">
+  		<label for="percentage">percentage</label><br>
+      	{{input type="number" class="form-control" id="percentage" value=percentage min="1" max="99.99"}}
+      </div>
+      <button class="btn btn-success btn-sm" {{action 'addNew'}}>Insert</button>
+  </div>
+  <div class="col-6">
+    <h3>Upload as File</h3><br>
+    <form class="form-group" id="fileUploadForm" enctype="multipart/form-data">
+          <div class="col">
+            <input class="form-control-file border" type="file" accept=".csv" name="file" id="upfile" onchange={{action "uploadFile"}} size="50"><br>
+          </div>
+    </form>
+    <div class="progress">
+      <div class="progress-bar bg-success" id="success">
+      </div>
+      <div class="progress-bar bg-warning" id="failure">
+      </div>
+    </div>
+    <div id="upload-status">
+    </div>
+  </div>
+</div>
+<div id="exception-div">
+</div>
+{{#if didUpload}}
+<div class="report-div">
+  <button class="btn btn-outline-info btn-sm" {{action "hide"}} >Dismiss</button>
+  <div class="upload-report">
+  <table class="table">
+    {{#each errorRows as |row|}}
+      <tr>
+        <td>{{row}}</td>
+      </tr>
+    {{/each}}
+  </table>
+  </div>
+</div>
+{{/if}}

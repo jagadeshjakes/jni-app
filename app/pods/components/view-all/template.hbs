@@ -1,0 +1,63 @@
+{{#if canView}}
+<div style="padding:50px">
+  <div class="row">
+    <div class="col">
+    <button class="btn btn-info btn-sm" id="prev" {{action 'prev'}}>prev</button>
+    </div>
+    <div class="col">
+      <label>Page:</label>
+    </div>
+    <div class="col">
+      <select class="form-control form-control-sm" id="page" onchange={{action "setPage" value="target.value"}}>
+        {{#each pages as |page|}}
+          <option value={{page}}>{{page}}</option>
+          {{/each}}
+        </select>
+    </div>
+    <div class="col">
+      <label>Size:</label>
+    </div>
+    <div class="col">
+    <select class="form-control form-control-sm" id="size" onchange={{action "setSize" value="target.value"}}>
+        <option value=10>10</option>
+        <option value=20>20</option>
+        <option value=50>50</option>
+        <option value=100>100</option>
+        <option value=1000>1000</option>
+      </select>
+      </div>
+      <div class="col">
+      <button class="btn btn-info btn-sm" id="next" {{action 'next'}}>next</button>
+      </div>
+      <div class="col">
+        {{input type='text' id="fileName" placeholder="filename"}}
+      </div>
+      <div class="col">
+        <button class="btn btn-info btn-sm" {{action 'exportPDF'}}>exportPDF</button>
+    </div>
+  </div>
+  <div class="view-report">
+  <table class="table">
+    <tr>
+    {{#each headers as |head|}}
+    <th>{{head}}</th>
+    {{/each}}
+  </tr>
+    {{#each viewData as |row|}}
+      <tr>
+        {{#each row as |col|}}
+          <td>{{col}}</td>
+        {{/each}}
+      </tr>
+      {{/each}}
+    </table>
+  </div>
+</div>
+{{else}}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+  <div id="error-area"></div>
+</div>
+{{/if}}

@@ -1,0 +1,13 @@
+.upload-report{
+  height: 500px;
+  width: 1200px;
+  overflow: scroll;
+}
+.view-report{
+  height:570px;
+
+  overflow: scroll;
+}
+.report-div{
+  margin-top: 50px;
+}

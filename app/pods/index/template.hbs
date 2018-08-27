@@ -1,0 +1,16 @@
+<br>
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <span class="nav-link active" {{action 'add'}} id="add">Add</span>
+  </li>
+  <li class="nav-item">
+    <span class="nav-link" {{action 'view'}} id="view">View</span>
+  </li>
+</ul>
+{{#if toView}}
+  {{#view-all}}
+  {{/view-all}}
+{{else}}
+  {{#add-new}}
+  {{/add-new}}
+{{/if}}
